@@ -11,7 +11,7 @@ python scaffold.py
 ## Steps
 
 - [x] **1.** impurity
-- [ ] **2.** split_dataset
+- [x] **2.** split_dataset
 - [ ] **3.** split_score
 - [ ] **4.** best_split
 - [ ] **5.** should_stop
