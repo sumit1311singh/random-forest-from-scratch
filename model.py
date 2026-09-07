@@ -56,7 +56,7 @@ import numpy as np
 def best_split(features, labels, feature_indices):
     # TODO: search feature_indices for the (feature, threshold) that best improves purity.
 
-    feature_index, best_threshold, best_split_score = None, None, 0.0
+    best_feature_index, best_threshold, best_split_score = None, None, 0.0
 
     for idx in feature_indices:
         col = np.sort(np.unique(features[:, idx]))
@@ -70,11 +70,11 @@ def best_split(features, labels, feature_indices):
             curr_split_score = split_score(labels, left_labels, right_labels)
             if best_split_score < curr_split_score:
                 best_split_score = curr_split_score
-                feature_index = idx
+                best_feature_index = idx
                 best_threshold = mid_point
     
     return {
-        'feature_index': feature_index,
+        'feature_index': best_feature_index,
         'threshold': best_threshold,
         'score': best_split_score
         }
