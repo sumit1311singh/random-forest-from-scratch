@@ -84,7 +84,7 @@ def should_stop(labels, depth, max_depth, min_samples_split):
     """Return True if this node should become a leaf instead of splitting further."""
     # TODO: decide whether to stop growing based on purity, depth, and size...
     labels = np.unique(labels)
-    if depth >= max_depth or len(labels) < min_samples_split:
+    if depth >= max_depth or len(labels) == 1 or len(labels) < min_samples_split:
         return True
     return False
 
