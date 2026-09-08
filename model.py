@@ -214,12 +214,39 @@ def train_forest(features, labels, num_trees=10, max_depth=10, min_samples_split
 
     return forest
 
-# Step 13 - combine_predictions (not yet solved)
-# TODO: implement
+# Step 13 - combine_predictions
+def combine_predictions(tree_predictions):
+    # TODO: aggregate the per-tree predictions of an ensemble into one prediction per example.
+    tree_predictions = np.array(tree_predictions)
+    
+    n = tree_predictions.shape[1]
 
-# Step 14 - predict_forest (not yet solved)
-# TODO: implement
+    predictions = []
 
-# Step 15 - accuracy (not yet solved)
-# TODO: implement
+    for i in range(n):
+        col = tree_predictions[:, i]
+    
+        counts = np.bincount(col)
+    
+        prediction = np.argmax(counts)
+        predictions.append(prediction)
+
+    return np.array(predictions)
+
+# Step 14 - predict_forest
+def predict_forest(forest, features):
+    # TODO: predict classes for a dataset using the whole trained forest.
+    all_tree_preds = []
+
+    for tree_details in forest:
+        tree = tree_details['tree']
+        preds = predict_tree(tree, features)
+        all_tree_preds.append(preds)
+
+    return combine_predictions(all_tree_preds)
+
+# Step 15 - accuracy
+def accuracy(predictions, labels):
+    # TODO: compute the fraction of entries where predictions equals labels
+    return np.mean(predictions == labels)
 
