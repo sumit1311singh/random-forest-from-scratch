@@ -165,8 +165,14 @@ def predict_tree(tree, features):
     
     return np.array(tree_predictions)
 
-# Step 10 - bootstrap_sample (not yet solved)
-# TODO: implement
+# Step 10 - bootstrap_sample
+def bootstrap_sample(features, labels, rng):
+    # TODO: draw a bootstrap sample of rows (with replacement) using rng.
+    n = features.shape[0]
+
+    sample_idx = rng.integers(0, n, size=n)
+
+    return (features[sample_idx], labels[sample_idx])
 
 # Step 11 - feature_subset (not yet solved)
 # TODO: implement
