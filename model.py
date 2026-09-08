@@ -236,14 +236,14 @@ def combine_predictions(tree_predictions):
 # Step 14 - predict_forest
 def predict_forest(forest, features):
     # TODO: predict classes for a dataset using the whole trained forest.
-    all_tree_preds = []
+    all_tree_predictions = []
 
     for tree_details in forest:
         tree = tree_details['tree']
-        preds = predict_tree(tree, features)
-        all_tree_preds.append(preds)
+        prediction = predict_tree(tree, features)
+        all_tree_predictions.append(prediction)
 
-    return combine_predictions(all_tree_preds)
+    return combine_predictions(all_tree_predictions)
 
 # Step 15 - accuracy
 def accuracy(predictions, labels):
